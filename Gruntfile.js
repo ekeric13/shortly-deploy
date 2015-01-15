@@ -32,6 +32,20 @@ module.exports = function(grunt) {
     },
 
     uglify: {
+      options: {
+        banner: '/*! Javascript files <%= grunt.template.today("dd-mm-yyyy") %> */\n',
+        mangle: false
+      },
+      dist: {
+        files: {
+          'public/dist/<%= pkg.name %>.min.js': ['public/dist/<%= pkg.name %>.js']
+        }
+      },
+      vendor: {
+        files: {
+          'public/dist/vendors.min.js': ['public/dist/vendors.js']
+        }
+      }
     },
 
     jshint: {
@@ -106,7 +120,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('build', [
     // concat, uglify
-    'concat'
+    'concat', 'uglify'
   ]);
 
   grunt.registerTask('upload', function(n) {
