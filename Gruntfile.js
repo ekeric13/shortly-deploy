@@ -11,7 +11,7 @@ module.exports = function(grunt) {
         dest:'public/dist/<%= pkg.name %>.js'
       },
       vendor: {
-        src: ['public/lib/**/*.js'],
+        src: ['public/lib/jquery.js', 'public/lib/underscore.js', 'public/lib/**/*.js'],
         dest: 'public/dist/vendors.js'
       }
     },
