@@ -2,9 +2,11 @@ var Bookshelf = require('bookshelf');
 var path = require('path');
 var host = process.env.HOST || '127.0.0.1';
 if (process.NODE_ENV === "production"){
-  var database = "shortlydevdb";
+  var database = "shortlydb";
+  var filename = path.join(__dirname, '../db/'+database+'.sqlite')
 } else {
-  var database = "shortlydb"
+  var database = "shortlydevdb";
+  var filename = path.join(__dirname, '../db/'+database+'.sqlite')
 }
 
 var db = Bookshelf.initialize({
@@ -15,7 +17,7 @@ var db = Bookshelf.initialize({
     password: 'password',
     database: database,
     charset: 'utf8',
-    filename: path.join(__dirname, '../db/shortly.sqlite')
+    filename: filename
   }
 });
 
