@@ -34,3 +34,6 @@ azure.err
 
 # Grunt externalities
 public/dist/
+
+# sql data
+*.sqlite
