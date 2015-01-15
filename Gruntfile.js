@@ -88,6 +88,11 @@ module.exports = function(grunt) {
 
     shell: {
       prodServer: {
+        command: 'git push azure master'
+      },
+
+      localServer: {
+        command: 'git push origin master'
       }
     },
   });
@@ -117,6 +122,14 @@ module.exports = function(grunt) {
   ////////////////////////////////////////////////////
   // Main grunt tasks
   ////////////////////////////////////////////////////
+
+  grunt.registerTask('push_to_github', [
+    'shell:localServer'
+  ]);
+
+  grunt.registerTask('push_to_production', [
+    'shell:prodServer'
+  ]);
 
   grunt.registerTask('test', [
     'mochaTest'
