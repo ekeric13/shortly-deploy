@@ -50,10 +50,9 @@ module.exports = function(grunt) {
 
     jshint: {
       files: [
-        // Add filespec list here
+        'Gruntfile.js', 'public/client/**/*.js', 'test/**/*.js'
       ],
       options: {
-        force: 'true',
         jshintrc: '.jshintrc',
         ignores: [
           'public/lib/**/*.js',
@@ -130,17 +129,18 @@ module.exports = function(grunt) {
   grunt.registerTask('upload', function(n) {
     if(grunt.option('prod')) {
       // add your production server task here
+      // push to azure
     } else {
       grunt.task.run([ 'server-dev' ]);
     }
   });
 
   grunt.registerTask('deploy', [
-    // add your deploy tasks here
-    // build
-    // jshint
-    // test
-    // then upload
+    'jshint',
+    'build',
+    'test',
+    'upload'
+
   ]);
 
 
